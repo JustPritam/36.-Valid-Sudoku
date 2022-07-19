@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        HashSet<String> h = new HashSet();
+        
+        for( int i = 0; i < 9; i++ ){
+            for( int j = 0; j < 9; j++ ){
+                char current_val = board[i][j];
+                if( current_val != '.' ){
+                    if( !h.add(current_val + " found in row " + i) ||
+                        !h.add(current_val + " found in column " + j) ||
+                        !h.add(current_val + " found in sub box " + i/3 + "-" + j/3))
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+// In hashset we are adding all the cells along with their respective row no. and coloumn no. and sub box no.. So if there is a repition in then it will be returned false.
+
+// Add function in HashSet returns true if the element is not present in the Hashset otherwise False if the element is already present in the HashSet.
+
+// Ref. Video : https://www.youtube.com/watch?v=rJ9NFK9s_mI
